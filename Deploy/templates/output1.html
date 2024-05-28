@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    body{
+        background-color: rgb(131, 42, 0);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        
+        
+    }
+</style>
+<body>
+    <!-- <div class="text-gray-700 bg-cover bg-[url('https://images.pexels.com/photos/2255801/pexels-photo-2255801.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')]"> -->
+        <nav class="fixed bg-white w-full z-10 border-b border-solid border-gray-300">
+          <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <a href="#" class="font-bold text-2xl lg:text-4xl">
+                FRUITS DISEASE CLASSIFICATIONS
+            </a>
+            <div class="block md:hidden">
+              <button class="flex items-center px-3 py-2 border rounded text-gray-500 boder-gray-600 hiver:text-gray-800">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://wwww.w3.org/2000/svg">
+                  <title>Menu</title>
+                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+              </button>
+            </div>
+            <div class="hidden md:block">
+              <ul class="inline-flex">
+                <li>
+                  <a href="{% url 'index' %}" class="px-4 font-bold hover:text-gray-800">
+                    Home
+                  </a>
+                </li>
+                
+                {% if user.is_authenticated %}
+                <li>  
+                    <a href="{% url 'logout' %}" class=" hover:text-gray-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                        </svg>
+                    </a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <nav>
+            {% if obj %}<br><br><br><br>
+        
+                    {% if predict == 'FOUND THIS IMAGE IS Freshapples' %}
+                    <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                      <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                      <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                        <p class="text-sm text-red-800 uppercase"><b>Freshapples</b></p>
+                        <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                            <b>FOUND THIS IMAGE IS Freshapples</b>
+                        </p><br>
+          
+                        <p class="text-sm text-blue-500 uppercase">Description</p>
+                        <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                          Crisp and succulent, fresh apples are a delightful embodiment of nature's sweetness. Their vibrant hues, ranging from ruby red to golden yellow, beckon with promises of juiciness and flavor. The smooth, polished skin hides a treasure trove of crispness that yields a satisfying crunch with every bite. Whether enjoyed on their own or incorporated into various culinary delights, these apples offer a refreshing burst of natural goodness. From orchard to table, their wholesome taste and fragrant aroma make them a timeless favorite for all seasons.
+                        </p><br>
+                      </div>
+                    </div>
+  
+  
+
+                    {% elif predict == 'FOUND THIS IMAGE IS Freshbanana' %}
+                    <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                      <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                      <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                        <p class="text-sm text-red-800 uppercase"><b>Freshbanana</b></p>
+                        <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                            <b>FOUND THIS IMAGE IS Freshbanana</b>
+                        </p><br>
+          
+                        <p class="text-sm text-blue-500 uppercase">Description</p>
+                        <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                          The fresh banana is a vibrant, elongated fruit with a smooth, thin peel that transitions from green to a bright yellow hue as it ripens. Its firm yet tender flesh offers a delightful combination of sweetness and slight acidity, creating a satisfyingly creamy texture. Packed with essential nutrients such as potassium, vitamins, and dietary fiber, the banana is a wholesome and convenient snack. Its subtly tropical aroma hints at the delectable flavor within, making it a universally loved and versatile fruit for various culinary uses. Whether enjoyed on its own or incorporated into smoothies, desserts, or breakfast dishes, the fresh banana remains a timeless and nutritious delight.
+                        </p><br>
+                      </div>
+                    </div>
+  
+                    {% elif predict == 'FOUND THIS IMAGE IS Freshoranges' %}  
+                    <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                        <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                        <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                          <p class="text-sm text-red-800 uppercase"><b>Freshoranges</b></p>
+                          <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                              <b>FOUND THIS IMAGE IS Freshoranges</b>
+                          </p><br>
+            
+                          <p class="text-sm text-blue-500 uppercase">Description</p>
+                          <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                            Fresh oranges are a burst of citrus sunshine, their vibrant hues enticing the senses. The smooth, slightly dimpled peel guards the juicy treasure within, releasing a zesty fragrance with each gentle squeeze. As you peel away the outer layer, the succulent, pulpy segments reveal themselves, brimming with natural sweetness. The tangy, refreshing flavor dances on the taste buds, leaving a lingering and invigorating sensation. A quintessential symbol of vitality, a fresh orange is a delightful and nutritious indulgence, embodying the essence of pure, fruity delight.
+                          </p><br>
+                        </div>
+                    </div>    
+                    {% elif predict == 'FOUND THIS IMAGE IS Rottenapples' %}
+                    <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                        <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                        <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                          <p class="text-sm text-red-800 uppercase">Rottenapples</p>
+                          <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                              <b>FOUND THIS IMAGE IS Rottenapples</b>
+                          </p><br>
+            
+                          <p class="text-sm text-blue-500 uppercase">Prevention</p>
+                          <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                            Proper Storage: Store apples in a cool, dark place with good air circulation. Refrigeration can significantly slow down the ripening process and inhibit the growth of mold and bacteria.<br>
+
+                            Inspect Regularly: Regularly inspect your apples for any signs of bruising, damage, or decay. Remove any damaged apples immediately to prevent the spread of spoilage.<br>
+
+                            Isolation: Keep apples away from other fruits and vegetables, as some produce releases ethylene gas, which can accelerate the ripening and decay of apples.<br>
+
+                            Adequate Ventilation: Ensure that the storage area has proper ventilation to prevent the buildup of moisture, which can contribute to the growth of mold.<br>
+
+                            Hygienic Handling: Practice good hygiene when handling apples. Wash your hands before touching them to reduce the transfer of bacteria that could lead to decay.
+                          </p><br>
+                          <p class="text-sm text-blue-500 uppercase">Causes</p>
+                          <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                            Bruising and Physical Damage: Apples are susceptible to bruising and damage during harvesting, transportation, or storage. Bruised areas provide entry points for bacteria and mold.<br>
+
+                            Fungal Infections: Fungi such as Botrytis cinerea (gray mold) and Penicillium expansum can infect apples, causing decay. This is often accelerated in humid conditions.<br>
+
+                            Bacterial Infections: Bacteria, particularly strains like Erwinia amylovora, can lead to bacterial rot in apples. Damaged tissues are particularly vulnerable.<br>
+
+                            Ethylene Exposure: Apples are sensitive to ethylene gas, a natural ripening agent produced by some fruits. Exposure to ethylene can accelerate the ripening and decay of apples.<br>
+
+                            Inadequate Storage Conditions: Improper storage, such as storing apples in warm or humid environments, can promote the growth of microorganisms and accelerate the spoilage process.
+                          </p><br>
+                        </div>
+                    </div>
+                    {% elif predict == 'FOUND THIS IMAGE IS Rottenbanana' %}
+                    <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                        <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                        <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                          <p class="text-sm text-red-800 uppercase">Rottenbanana</p>
+                          <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                              <b>FOUND THIS IMAGE IS Rottenbanana</b>
+                          </p><br>
+            
+                          <p class="text-sm text-blue-500 uppercase">Prevention</p>
+                          <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                            Proper Storage: Store bananas in a cool, dry place, away from direct sunlight. Hanging them on a banana hook can also prevent bruising and slow down ripening.<br>
+                            Separation from Other Fruits: Keep bananas separate from other fruits as they release ethene gas, which accelerates ripening. Storing them with fruits like apples or tomatoes can lead to quicker spoilage.<br>
+                            Refrigeration: If bananas are already ripe and you want to slow down the process, consider refrigerating them. The skin may darken, but the fruit inside will be preserved for a longer time.<br>
+                            Ventilation: Ensure proper air circulation around the bananas. Avoid placing them in airtight bags or containers, as this can trap moisture and encourage decay.
+                          </p><br>
+                          <p class="text-sm text-blue-500 uppercase">Causes</p>
+                          <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                            Ethene Gas: Bananas produce ethene gas as they ripen, which accelerates the ripening of nearby bananas and other fruits. This can lead to quicker spoilage if not managed properly.<br>
+                            Bruising: Handling bananas roughly can cause bruising, breaking the skin and providing entry points for bacteria and fungi that accelerate the decay process.<br>
+                            Temperature Extremes: Exposure to extreme temperatures, either too hot or too cold, can lead to quicker spoilage. Bananas are sensitive to temperature changes and should be stored in a moderate environment.<br>
+                            Moisture: Excess moisture can contribute to the growth of mold and bacteria, leading to the decay of bananas. Ensure that the storage area is dry, and avoid using plastic bags that can trap moisture.<br>
+                            Overripening: Bananas naturally become softer and sweeter as they ripen. Overripe bananas are more susceptible to decay, so it's essential to consume or properly store them before they reach this stage.
+                          </p><br>
+                        </div>
+                    </div>
+                    {% elif predict == 'FOUND THIS IMAGE IS Rottenoranges' %}
+                    <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                        <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                        <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                          <p class="text-sm text-red-800 uppercase">Rottenoranges</p>
+                          <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                              <b>FOUND THIS IMAGE IS Rottenoranges</b>
+                          </p><br>
+            
+                          <p class="text-sm text-blue-500 uppercase">Prevention</p>
+                          <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                            Proper Storage: Store oranges in a cool, dry place with good air circulation to prevent moisture buildup, which can accelerate the rotting process.<br>
+
+                            Regular Inspection: Regularly check your oranges for any signs of mold, discoloration, or soft spots. Remove any damaged or overripe oranges promptly to prevent the spread of decay.<br>
+
+                            Ventilation: Ensure proper ventilation in storage areas to reduce humidity, as excessive moisture can contribute to the growth of mold and accelerate decay.<br>
+
+                            Isolation from Other Fruits: Keep oranges separate from other fruits, especially those that release ethylene gas, as it can hasten the ripening and decay of oranges.<br>
+
+                            Refrigeration: For longer shelf life, consider refrigerating oranges, particularly if you won't be consuming them immediately. Cold temperatures can slow down the ripening process and inhibit mold growth.
+                          </p><br>
+                          <p class="text-sm text-blue-500 uppercase">Causes</p>
+                          <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                            High Humidity: Excessive humidity can lead to the growth of mold and bacteria on the orange's surface, causing it to rot.<br>
+
+                            Bruising or Damage: Physical damage, such as bruising or punctures, can create entry points for microorganisms, accelerating the decay process.<br>
+
+                            Overripeness: Oranges that are left to overripen can become soft, attracting mold and bacteria. Prompt consumption or proper storage is essential to prevent this.<br>
+
+                            Poor Ventilation: Inadequate air circulation in storage areas can create a microenvironment conducive to mold growth, leading to the deterioration of the oranges.<br>
+
+                            Contamination: Cross-contamination from other spoiled fruits or vegetables in close proximity can introduce mold spores or bacteria to the oranges, hastening their decay.
+                          </p><br>
+                        </div>
+                    </div>
+                    
+
+                    
+
+{% endif %}
+{% endif %}
+
+</body>
+</html>

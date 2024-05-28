@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    body{
+        background-color: rgb(21, 82, 21);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        
+        
+    }
+</style>
+<body>
+    <!-- <div class="text-gray-700 bg-cover bg-[url('https://images.pexels.com/photos/2255801/pexels-photo-2255801.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')]"> -->
+        <nav class="fixed bg-white w-full z-10 border-b border-solid border-gray-300">
+          <div class="container mx-auto px-6 py-2 flex justify-between items-center">
+            <a href="#" class="font-bold text-2xl lg:text-4xl">
+              FRUITS LEAF DISEASE CLASSIFICATIONS
+            </a>
+            <div class="block md:hidden">
+              <button class="flex items-center px-3 py-2 border rounded text-gray-500 boder-gray-600 hiver:text-gray-800">
+                <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://wwww.w3.org/2000/svg">
+                  <title>Menu</title>
+                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+              </button>
+            </div>
+            <div class="hidden md:block">
+              <ul class="inline-flex">
+                <li>
+                  <a href="{% url 'index' %}" class="px-4 font-bold hover:text-gray-800">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'problem_statement' %}" class="px-4 font-bold hover:text-gray-800"></a>
+                    Problem statement
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'model' %}" class="px-4 font-bold hover:text-gray-800">
+                    Model
+                  </a>
+                </li>
+                <li>
+                  <a href="{% url 'model_database' %}" class="px-4 font-bold hover:text-gray-800">
+                    Model Database
+                  </a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>  
+                    <a href="{% url 'logout' %}" class=" hover:text-gray-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+                        </svg>
+                    </a>
+                </li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <nav>
+            {% if obj %}<br><br><br><br>
+        
+            {% if predict == 'FOUND THIS IMAGE IS Apple Affected' %}
+            <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+              <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+              <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                  <p class="text-sm text-red-800 uppercase"><b>Apple Affected</b></p>
+                  <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                    <b>FOUND THIS IMAGE IS Apple Affected</b>
+                  </p><br>
+              
+                  <p class="text-sm text-blue-500 uppercase">Prevention</p>
+                  <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                    Fungal-resistant Varieties: Choose apple tree varieties bred for resistance to common fungal diseases to minimize susceptibility.<br>
+                    Regular Monitoring: Inspect trees regularly for signs of insect infestations and apply appropriate pest control measures.<br>
+                    Optimal Watering: Maintain a consistent watering schedule to prevent both drought and waterlogging stress.<br>
+                    Balanced Fertilization: Provide proper nutrition through regular fertilization to ensure the tree receives essential nutrients.<br>
+                    Pruning Practices: Prune infected branches promptly and adopt proper pruning techniques to improve air circulation, reducing the risk of fungal and bacterial diseases.     
+                  </p><br>
+                  <p class="text-sm text-blue-500 uppercase">Causes</p>
+                  <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                    Fungal Infections: Apple leaves can be affected by various fungal pathogens like apple scab and powdery mildew, which thrive in humid conditions.<br>
+                    Insect Infestations: Pests such as aphids and mites can damage apple leaves by feeding on them, leading to discoloration and deformation.<br>
+                    Environmental Stress: Harsh weather conditions, including drought or excessive rainfall, can stress apple trees, making them more susceptible to leaf issues.<br>
+                    Nutrient Deficiency: Lack of essential nutrients, particularly nitrogen, can result in poor leaf development and overall tree health.<br>
+                    Bacterial Diseases: Bacterial infections like fire blight can cause wilting and blackening of apple leaves, spreading rapidly during warm and moist periods.     
+                  </p><br>
+                  
+              </div>
+            </div>
+
+
+
+            {% elif predict == 'FOUND THIS IMAGE IS Apple healthy' %}
+            <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+              <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+              <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                  <p class="text-sm text-red-800 uppercase"><b>Apple healthy</b></p>
+                  <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                      <b>FOUND THIS IMAGE IS Apple healthy</b>
+                  </p><br>
+    
+                  <p class="text-sm text-blue-500 uppercase">Description</p>
+                  <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                    A healthy tomato leaf exhibits vibrant green coloration, with a smooth and turgid texture. The leaf surface is free from any discoloration, spots, or lesions, indicating the absence of fungal or bacterial infections. The leaf edges are uniformly shaped and devoid of wilting or curling, reflecting proper hydration and nutrient balance. Robust and well-formed, a healthy tomato leaf contributes to the overall vigor of the plant, supporting optimal photosynthesis and fruit development. Regular monitoring and care, including adequate water and nutrient supply, contribute to maintaining the vitality of tomato foliage.      
+                  </p><br>
+                  
+              </div>
+            </div>
+
+            {% elif predict == 'FOUND THIS IMAGE IS Grape Affected' %}  
+            <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                    <p class="text-sm text-red-800 uppercase"><b>Grape Affected</b></p>
+                    <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                        <b>FOUND THIS IMAGE IS Grape Affected</b>
+                    </p><br>
+      
+                    <p class="text-sm text-blue-500 uppercase">Prevention</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      Regular Inspection: Conduct frequent inspections to detect signs of diseases or pests early on.<br>
+                      Pruning: Implement a strict pruning schedule to maintain proper air circulation and reduce the risk of fungal infections.<br>
+                      Fungicides and Pesticides: Apply appropriate fungicides and pesticides as preventive measures, following recommended guidelines.<br>
+                      Hygiene Practices: Practice good vineyard hygiene by promptly removing and disposing of infected leaves.<br>
+                      Resistant Varieties: Consider planting grape varieties with resistance to common diseases to minimize susceptibility.
+                    </p><br>
+                    <p class="text-sm text-blue-500 uppercase">Causes</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      Fungal Infections: Grape leaves may be affected by fungal diseases like powdery mildew and downy mildew, which thrive in humid conditions.<br>
+                      Pests: Insects such as grapevine leafhoppers and spider mites can cause damage by feeding on the leaves.<br>
+                      Poor Air Circulation: Dense foliage and inadequate pruning can reduce air circulation, creating a favorable environment for diseases.<br>
+                      Overwatering: Excessive moisture due to overwatering or improper irrigation practices may lead to waterlogged soil, promoting root diseases affecting the leaves.<br>
+                      Susceptible Varieties: Planting grape varieties without considering local disease prevalence can contribute to leaf-related issues.
+                    </p><br>
+                    
+                </div>
+            </div>    
+            {% elif predict == 'FOUND THIS IMAGE IS Grape healthy' %}
+            <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                    <p class="text-sm text-red-800 uppercase">Grape healthy</p>
+                    <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                        <b>FOUND THIS IMAGE IS Grape healthy</b>
+                    </p><br>
+                    
+      
+                    <p class="text-sm text-blue-500 uppercase">Description</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      A healthy grape leaf boasts a rich green color, signaling a thriving photosynthetic process. Its surface is smooth and free from any blemishes, indicating the absence of fungal infections or pests. Well-defined leaf edges contribute to a symmetrical appearance, showcasing the plant's vitality. The leaf is turgid and not prone to wilting, reflecting proper hydration and nutrient absorption. Overall, a healthy grape leaf supports optimal vine growth, ensuring the production of high-quality grapes.
+                    </p><br>
+                    
+                </div>
+            </div>
+            {% elif predict == 'FOUND THIS IMAGE IS Potato Affected' %}
+            <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                    <p class="text-sm text-red-800 uppercase">Potato Affected</p>
+                    <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                        <b>FOUND THIS IMAGE IS Potato Affected</b>
+                    </p><br>
+      
+                    <p class="text-sm text-blue-500 uppercase">Prevention</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      Late Blight: Potato leaves can be affected by the fungal disease late blight, caused by Phytophthora infestans, leading to rapid browning and decay.<br>
+                      Aphid Infestation: Aphids, small sap-sucking insects, can transmit viruses like Potato Virus Y, causing yellowing and distortion of potato leaves.<br>
+                      Bacterial Wilt: Bacterial wilt, caused by Ralstonia solanacearum, can result in wilting and browning of potato leaves due to bacterial infection.<br>
+                      Early Blight: Another fungal pathogen, Alternaria solani, causes early blight, leading to the development of dark lesions on potato leaves.<br>
+                      Leafhoppers: Leafhoppers can transmit the phytoplasma that causes potato purple top disease, resulting in stunted growth and purple discoloration of leaves.
+                    </p><br>
+                    <p class="text-sm text-blue-500 uppercase">Causes</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      Crop Rotation: Rotate potato crops to reduce the risk of soil-borne diseases and pests.<br>
+                      Resistant Varieties: Plant potato varieties resistant to specific diseases, such as late blight-resistant cultivars.<br>
+                      Aphid Control: Implement measures to control aphid populations, such as using insecticidal soaps or introducing natural predators.<br>
+                      Sanitation Practices: Remove and destroy infected potato plants promptly to prevent the spread of diseases.<br>
+                      Fungicides: Apply fungicides as a preventive measure, especially during periods conducive to fungal disease development.
+                    </p><br>
+                    
+                </div>
+            </div>
+            {% elif predict == 'FOUND THIS IMAGE IS Potato healthy' %}
+            <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                    <p class="text-sm text-red-800 uppercase">Potato healthy</p>
+                    <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                        <b>FOUND THIS IMAGE IS Potato healthy</b>
+                    </p><br>
+      
+                    <p class="text-sm text-blue-500 uppercase">Description</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      A healthy potato leaf showcases a vibrant green hue, indicating robust photosynthesis and nutrient absorption. The surface is smooth and unmarred, devoid of discoloration, spots, or pest damage. Well-defined leaf structure and edges contribute to an overall uniform appearance. Turgid and upright, the leaf reflects proper hydration and a balanced nutrient supply. A thriving potato leaf supports the plant's energy production and storage, crucial for the development of tubers.
+                    </p><br>
+                    
+                </div>
+            </div>
+            {% elif predict == 'FOUND THIS IMAGE IS Strawberry Affected' %}
+            <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                    <p class="text-sm text-red-800 uppercase">Strawberry Affected</p>
+                    <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                        <b>FOUND THIS IMAGE IS Strawberry Affected</b>
+                    </p><br>
+      
+                    <p class="text-sm text-blue-500 uppercase">Prevention</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      Adequate Spacing: Plant strawberries with proper spacing to improve air circulation and reduce the risk of fungal diseases.<br>
+                      Fungicide Application: Apply fungicides preventively, especially during periods conducive to fungal growth, to protect against powdery mildew and gray mold.<br>
+                      Aphid Management: Implement measures to control aphid populations, such as introducing natural predators or using insecticidal soaps.<br>
+                      Well-Drained Soil: Ensure well-drained soil to prevent waterlogged conditions and minimize the risk of red stele root rot.<br>
+                      Regular Inspection: Conduct regular inspections to detect early signs of pests or diseases, allowing for prompt intervention and mitigation.
+                    </p><br>
+                    <p class="text-sm text-blue-500 uppercase">Causes</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      Powdery Mildew: Strawberry leaves can be affected by powdery mildew, a fungal infection characterized by a white powdery substance on the leaf surface.<br>
+                      Botrytis Gray Mold: The fungus Botrytis cinerea can cause gray mold on strawberry leaves, particularly in humid conditions or overcrowded plantings.<br>
+                      Aphid Infestation: Aphids feeding on strawberry plants can transmit viruses, leading to leaf distortion and yellowing.<br>
+                      Red Stele Root Rot: Caused by Phytophthora fragariae, red stele root rot can result in wilting and reddening of strawberry leaves due to root damage.<br>
+                      Two-Spotted Spider Mites: Infestations of two-spotted spider mites can cause stippling, discoloration, and reduced photosynthesis in strawberry leaves.
+                    </p><br>
+                    
+                </div>
+            </div>
+            {% elif predict == 'FOUND THIS IMAGE IS Strawberry healthy' %}
+            <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                    <p class="text-sm text-red-800 uppercase">Strawberry healthy</p>
+                    <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                        <b>FOUND THIS IMAGE IS Strawberry healthy</b>
+                    </p><br>
+      
+                    <p class="text-sm text-blue-500 uppercase">Description</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      A healthy strawberry leaf displays a lush, vibrant green color, reflecting optimal photosynthesis and vitality. The surface is smooth, free from any signs of disease or pest damage, highlighting the plant's robust condition. Well-formed leaflets contribute to an overall symmetrical appearance, indicating balanced growth. The edges are uniformly shaped, and the leaf structure is turgid, showcasing proper hydration and nutrient uptake. A thriving strawberry leaf is crucial for sustaining the plant's energy production and ensuring the development of flavorful berries.
+                    </p><br>
+                    
+                </div>
+            </div>
+            {% elif predict == 'FOUND THIS IMAGE IS Tomato Affected' %}
+            <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                    <p class="text-sm text-red-800 uppercase">Tomato Affected</p>
+                    <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                        <b>FOUND THIS IMAGE IS Tomato Affected</b>
+                    </p><br>
+      
+                    <p class="text-sm text-blue-500 uppercase">Prevention</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      Crop Rotation: Rotate tomato crops to reduce the risk of soil-borne diseases and pests.<br>
+                      Resistant Varieties: Plant tomato varieties resistant to specific diseases, such as those resistant to early blight or late blight.<br>
+                      Insecticidal Soaps: Use insecticidal soaps to control tomato hornworms and other insect pests.<br>
+                      Whitefly Management: Employ methods like reflective mulches or introduce natural predators to manage whitefly populations.<br>
+                      Proper Watering: Avoid overhead watering and irrigate at the base to minimize the spread of bacterial diseases and reduce humidity around the plant.
+                    </p><br>
+                    <p class="text-sm text-blue-500 uppercase">Causes</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      Early Blight: Fungal pathogen Alternaria solani can cause early blight in tomato leaves, resulting in dark concentric lesions and yellowing.<br>
+                      Tomato Hornworm: Larvae of the tomato hornworm (Manduca quinquemaculata) can devour tomato leaves, causing defoliation and damage.<br>
+                      Late Blight: Phytophthora infestans, a water mold, can lead to late blight in tomato leaves, causing browning and decay.<br>
+                      Whiteflies: Whiteflies can transmit viruses, causing yellowing, curling, and stunted growth in tomato leaves.<br>
+                      Bacterial Speck: Bacterial speck, caused by Pseudomonas syringae, results in small dark spots with a yellow halo on tomato leaves.
+                    </p><br>
+                    
+                </div>
+            </div>
+            {% elif predict == 'FOUND THIS IMAGE IS Tomato healthy' %}
+            <div class="mt8 lg:-mx-6 lg:flex lg:items-center">
+                <img class="object-cover w-full lg:mx-6 lg:w-1/2 rounded-xl h-72 lg:h-96" src="{{ obj.image.url }}" alt="">
+                <div class="mt-6 lg:w-1/2 lg:mt-0 lg:mx-6 ">
+                    <p class="text-sm text-red-800 uppercase">Tomato healthy</p>
+                    <p class="block mt-4 text-2xl font-semibold text-gray-800  dark:text-white md:text-3xl">
+                        <b>FOUND THIS IMAGE IS Tomato healthy</b>
+                    </p><br>
+      
+                    <p class="text-sm text-blue-500 uppercase">Description</p>
+                    <p class="mt-3 text-sm text-gray-500 dark:text-gray-300 md:text-sm">
+                      A healthy tomato leaf exhibits a deep, lush green color, indicative of vigorous photosynthesis and nutrient absorption. Its surface is smooth and unblemished, devoid of any spots or discoloration, signaling resistance to fungal or bacterial infections. Well-defined leaf edges contribute to a symmetrical appearance, showcasing the plant's overall robustness. The leaf structure is turgid and upright, demonstrating proper hydration and nutrient balance. A thriving tomato leaf is essential for supporting the plant's growth and contributing to the development of flavorful and abundant fruits.
+                    </p><br>
+                    
+                </div>
+            </div>
+                    
+
+                    
+
+{% endif %}
+{% endif %}
+
+</body>
+</html>
